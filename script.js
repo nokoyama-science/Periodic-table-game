@@ -1,132 +1,70 @@
-body{
-    margin:0;
-    padding:6px;
-    background:#e8f4ff;
-    font-family:"Yu Gothic","Hiragino Sans","Meiryo",sans-serif;
+const elements = [
+    {symbol:"H", name:"水素"},
+    {symbol:"He", name:"ヘリウム"},
+    {symbol:"Li", name:"リチウム"},
+    {symbol:"Be", name:"ベリリウム"},
+    {symbol:"B", name:"ホウ素"},
+    {symbol:"C", name:"炭素"},
+    {symbol:"N", name:"窒素"},
+    {symbol:"O", name:"酸素"},
+    {symbol:"F", name:"フッ素"},
+    {symbol:"Ne", name:"ネオン"},
+    {symbol:"Na", name:"ナトリウム"},
+    {symbol:"Mg", name:"マグネシウム"},
+    {symbol:"Al", name:"アルミニウム"},
+    {symbol:"Si", name:"ケイ素"},
+    {symbol:"P", name:"リン"},
+    {symbol:"S", name:"硫黄"},
+    {symbol:"Cl", name:"塩素"},
+    {symbol:"Ar", name:"アルゴン"},
+    {symbol:"K", name:"カリウム"},
+    {symbol:"Ca", name:"カルシウム"}
+];
+
+let score = 0;
+let count = 0;
+let current;
+
+function nextQuestion(){
+
+    if(count >= 20){
+        document.getElementById("message").textContent =
+            `終了！スコア：${score}/20`;
+        return;
+    }
+
+    current = elements[Math.floor(Math.random()*elements.length)];
+
+    let isCorrect = Math.random() < 0.7;
+
+    let displaySymbol = isCorrect
+        ? current.symbol
+        : elements[Math.floor(Math.random()*elements.length)].symbol;
+
+    document.getElementById("symbol").textContent = displaySymbol;
+    document.getElementById("name").textContent = current.name;
+
+    current.isCorrect = (displaySymbol === current.symbol);
+
+    document.getElementById("count").textContent = count + 1;
+    document.getElementById("message").textContent = "";
 }
 
-.container{
-    max-width:700px;
-    margin:auto;
-    background:white;
-    border-radius:16px;
-    padding:10px;
-    text-align:center;
-    box-shadow:0 4px 12px rgba(0,0,0,0.12);
+function answer(userAnswer){
+
+    if(userAnswer === current.isCorrect){
+        score++;
+        document.getElementById("message").textContent = "○ 正解！";
+        document.getElementById("message").style.color = "#039be5";
+    }else{
+        document.getElementById("message").textContent = "× 不正解";
+        document.getElementById("message").style.color = "#f48fb1";
+    }
+
+    document.getElementById("score").textContent = score;
+
+    count++;
+    setTimeout(nextQuestion, 500);
 }
 
-h1{
-    margin:4px 0 6px 0;
-    font-size:26px;
-    color:#0066cc;
-}
-
-.top-bar{
-    display:flex;
-    justify-content:space-between;
-    font-size:18px;
-    font-weight:bold;
-    margin-bottom:6px;
-}
-
-.question-title{
-    font-size:18px;
-    margin-bottom:4px;
-    color:#444;
-}
-
-.question{
-    margin:8px 0;
-}
-
-.bigText{
-    font-size:44px;
-    font-weight:bold;
-    color:#0066cc;
-}
-
-#name{
-    font-size:20px;
-    color:#333;
-}
-
-.buttonArea{
-    display:flex;
-    justify-content:center;
-    gap:16px;
-    margin:10px 0;
-}
-
-button{
-    width:150px;
-    height:70px;
-    border:none;
-    border-radius:14px;
-    cursor:pointer;
-    font-size:26px;
-    font-weight:bold;
-    color:white;
-    transition:0.15s;
-}
-
-button:hover{
-    transform:scale(1.04);
-}
-
-button:active{
-    transform:scale(0.98);
-}
-
-/* 👇 色覚配慮：赤緑をやめる */
-
-.trueButton{
-    background:#1e88e5; /* 青 */
-}
-
-.trueButton:hover{
-    background:#1565c0;
-}
-
-.falseButton{
-    background:#ff8f00; /* オレンジ */
-}
-
-.falseButton:hover{
-    background:#e65100;
-}
-
-#message{
-    min-height:28px;
-    margin-top:6px;
-    font-size:22px;
-    font-weight:bold;
-}
-
-.footer{
-    margin-top:4px;
-    font-size:13px;
-    color:#666;
-}
-
-/* スマホ */
-@media(max-width:700px){
-
-h1{
-    font-size:22px;
-}
-
-.bigText{
-    font-size:38px;
-}
-
-button{
-    width:200px;
-    height:64px;
-    font-size:24px;
-}
-
-.buttonArea{
-    flex-direction:column;
-    align-items:center;
-}
-}
+nextQuestion();
