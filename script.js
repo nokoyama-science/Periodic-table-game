@@ -1,224 +1,132 @@
-// ==========================================
-// 元素○×チャレンジ
-// script.js
-// ==========================================
-
-// ---------- 元素データ ----------
-
-const elements = [
-
-    {name:"水素",symbol:"H"},
-    {name:"ヘリウム",symbol:"He"},
-    {name:"リチウム",symbol:"Li"},
-    {name:"ベリリウム",symbol:"Be"},
-    {name:"ホウ素",symbol:"B"},
-    {name:"炭素",symbol:"C"},
-    {name:"窒素",symbol:"N"},
-    {name:"酸素",symbol:"O"},
-    {name:"フッ素",symbol:"F"},
-    {name:"ネオン",symbol:"Ne"},
-    {name:"ナトリウム",symbol:"Na"},
-    {name:"マグネシウム",symbol:"Mg"},
-    {name:"アルミニウム",symbol:"Al"},
-    {name:"ケイ素",symbol:"Si"},
-    {name:"リン",symbol:"P"},
-    {name:"硫黄",symbol:"S"},
-    {name:"塩素",symbol:"Cl"},
-    {name:"アルゴン",symbol:"Ar"},
-    {name:"カリウム",symbol:"K"},
-    {name:"カルシウム",symbol:"Ca"}
-
-];
-
-// ---------- 設定 ----------
-
-const TOTAL = 20;
-
-let score = 0;
-let count = 0;
-
-let correctAnswer = true;
-
-// ---------- HTML ----------
-
-const questionNumber = document.getElementById("questionNumber");
-const scoreText = document.getElementById("score");
-const question = document.getElementById("question");
-const message = document.getElementById("message");
-
-const trueButton = document.getElementById("trueButton");
-const falseButton = document.getElementById("falseButton");
-
-// ---------- ボタン ----------
-
-trueButton.addEventListener("click",function(){
-
-    judge(true);
-
-});
-
-falseButton.addEventListener("click",function(){
-
-    judge(false);
-
-});
-
-// ---------- 最初の問題 ----------
-
-nextQuestion();
-
-// ---------- 問題 ----------
-
-function nextQuestion(){
-
-    if(count>=TOTAL){
-
-        finishGame();
-
-        return;
-
-    }
-
-    message.textContent="";
-
-    questionNumber.textContent=
-    `問題 ${count+1} / ${TOTAL}`;
-
-    // 元素を選ぶ
-
-    const element=
-    elements[Math.floor(Math.random()*elements.length)];
-
-    // 本当か嘘か
-
-    correctAnswer=
-    Math.random()<0.5;
-
-    let symbol;
-
-    if(correctAnswer){
-
-        symbol=element.symbol;
-
-    }
-
-    else{
-
-        do{
-
-            symbol=
-            elements[Math.floor(Math.random()*elements.length)].symbol;
-
-        }
-
-        while(symbol===element.symbol);
-
-    }
-
-    question.innerHTML=
-
-    `${element.name}の元素記号は
-
-    <br><br>
-
-    <span class="bigText">${symbol}</span>
-
-    <br><br>
-
-    である。`;
-
+body{
+    margin:0;
+    padding:6px;
+    background:#e8f4ff;
+    font-family:"Yu Gothic","Hiragino Sans","Meiryo",sans-serif;
 }
 
-// ---------- 判定 ----------
-
-function judge(choice){
-
-    if(choice===correctAnswer){
-
-        score++;
-
-        message.style.color="green";
-
-        message.textContent="⭕ 正解！";
-
-    }
-
-    else{
-
-        message.style.color="red";
-
-        message.textContent="❌ 不正解！";
-
-    }
-
-    count++;
-
-    scoreText.textContent=
-    `得点：${score}`;
-
-    setTimeout(nextQuestion,1000);
-
+.container{
+    max-width:700px;
+    margin:auto;
+    background:white;
+    border-radius:16px;
+    padding:10px;
+    text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,0.12);
 }
 
-// ---------- 終了 ----------
+h1{
+    margin:4px 0 6px 0;
+    font-size:26px;
+    color:#0066cc;
+}
 
-function finishGame(){
+.top-bar{
+    display:flex;
+    justify-content:space-between;
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:6px;
+}
 
-    const percent=
-    Math.round(score/TOTAL*100);
+.question-title{
+    font-size:18px;
+    margin-bottom:4px;
+    color:#444;
+}
 
-    let rank="";
+.question{
+    margin:8px 0;
+}
 
-    if(percent>=95){
+.bigText{
+    font-size:44px;
+    font-weight:bold;
+    color:#0066cc;
+}
 
-        rank="🏆 Sランク";
+#name{
+    font-size:20px;
+    color:#333;
+}
 
-    }
+.buttonArea{
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    margin:10px 0;
+}
 
-    else if(percent>=80){
+button{
+    width:150px;
+    height:70px;
+    border:none;
+    border-radius:14px;
+    cursor:pointer;
+    font-size:26px;
+    font-weight:bold;
+    color:white;
+    transition:0.15s;
+}
 
-        rank="🥇 Aランク";
+button:hover{
+    transform:scale(1.04);
+}
 
-    }
+button:active{
+    transform:scale(0.98);
+}
 
-    else if(percent>=60){
+/* 👇 色覚配慮：赤緑をやめる */
 
-        rank="🥈 Bランク";
+.trueButton{
+    background:#1e88e5; /* 青 */
+}
 
-    }
+.trueButton:hover{
+    background:#1565c0;
+}
 
-    else if(percent>=40){
+.falseButton{
+    background:#ff8f00; /* オレンジ */
+}
 
-        rank="🥉 Cランク";
+.falseButton:hover{
+    background:#e65100;
+}
 
-    }
+#message{
+    min-height:28px;
+    margin-top:6px;
+    font-size:22px;
+    font-weight:bold;
+}
 
-    else{
+.footer{
+    margin-top:4px;
+    font-size:13px;
+    color:#666;
+}
 
-        rank="📖 もう一度挑戦！";
+/* スマホ */
+@media(max-width:700px){
 
-    }
+h1{
+    font-size:22px;
+}
 
-    document.querySelector(".container").innerHTML=
+.bigText{
+    font-size:38px;
+}
 
-    `
+button{
+    width:200px;
+    height:64px;
+    font-size:24px;
+}
 
-    <h1>🎉 終了！</h1>
-
-    <h2>${score} / ${TOTAL} 点</h2>
-
-    <h2>正答率 ${percent}%</h2>
-
-    <h1>${rank}</h1>
-
-    <br>
-
-    <button onclick="location.reload()">
-
-    もう一度遊ぶ
-
-    </button>
-
-    `;
-
+.buttonArea{
+    flex-direction:column;
+    align-items:center;
+}
 }
