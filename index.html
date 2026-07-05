@@ -1,88 +1,41 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>🧪 元素○×チャレンジ</title>
-
-    <link rel="stylesheet" href="style.css">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>元素○×チャレンジ</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <div class="container">
 
-    <h1>🧪 元素○×チャレンジ</h1>
+    <h1>元素○×チャレンジ（1〜20）</h1>
 
     <div class="top-bar">
-
-        <div id="questionNumber">
-            問題 1 / 20
-        </div>
-
-        <div id="score">
-            得点：0
-        </div>
-
+        <div>スコア：<span id="score">0</span></div>
+        <div>問題：<span id="count">1</span>/20</div>
     </div>
 
-    <div class="question-title">
+    <div class="question-title">この元素記号は正しい？</div>
 
-        次の文章は正しい？
-
-    </div>
-
-    <div id="question" class="question">
-
-        ナトリウムの元素記号は<br><br>
-
-        <span class="bigText">Na</span><br><br>
-
-        である。
-
+    <div class="question">
+        <div class="bigText" id="symbol">H</div>
+        <div id="name">水素</div>
     </div>
 
     <div class="buttonArea">
-
-        <button id="trueButton" class="trueButton">
-
-            ⭕
-
-            <br>
-
-            ○
-
-        </button>
-
-        <button id="falseButton" class="falseButton">
-
-            ❌
-
-            <br>
-
-            ×
-
-        </button>
-
+        <button class="trueButton" onclick="answer(true)">○ 正しい</button>
+        <button class="falseButton" onclick="answer(false)">× 違う</button>
     </div>
 
     <div id="message"></div>
 
-    <div class="footer">
-
-        全20問ランダム出題
-
-    </div>
+    <div class="footer">元素1〜20を覚えよう！</div>
 
 </div>
 
 <script src="script.js"></script>
-
 </body>
-
 </html>
