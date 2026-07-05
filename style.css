@@ -57,6 +57,7 @@ h1{
     margin:10px 0;
 }
 
+/* 共通ボタン */
 button{
     width:150px;
     height:70px;
@@ -77,24 +78,24 @@ button:active{
     transform:scale(0.98);
 }
 
-/* 👇 色覚配慮：赤緑をやめる */
-
-.trueButton{
-    background:#4fc3f7; /* 水色 */
+/* 🔵 正解＝水色 */
+#trueBtn{
+    background:#4fc3f7 !important;
     color:#003344;
 }
 
-.trueButton:hover{
-    background:#039be5;
+#trueBtn:hover{
+    background:#039be5 !important;
 }
 
-.falseButton{
-    background:#f8bbd0; /* 淡いピンク */
+/* 💗 不正解＝淡いピンク */
+#falseBtn{
+    background:#f8bbd0 !important;
     color:#5a0030;
 }
 
-.falseButton:hover{
-    background:#f48fb1;
+#falseBtn:hover{
+    background:#f48fb1 !important;
 }
 
 #message{
