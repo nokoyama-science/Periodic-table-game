@@ -1,0 +1,236 @@
+/* ==========================================
+   元素○×チャレンジ
+   style.css
+========================================== */
+
+body{
+
+    margin:0;
+
+    padding:30px;
+
+    background:#e8f4ff;
+
+    font-family:"Yu Gothic","Hiragino Sans","Meiryo",sans-serif;
+
+}
+
+.container{
+
+    max-width:700px;
+
+    margin:auto;
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:35px;
+
+    text-align:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+
+}
+
+h1{
+
+    color:#0066cc;
+
+    margin-bottom:25px;
+
+}
+
+/* 上部 */
+
+.top-bar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    margin-bottom:30px;
+
+}
+
+/* 問題タイトル */
+
+.question-title{
+
+    font-size:28px;
+
+    color:#444;
+
+    margin-bottom:20px;
+
+}
+
+/* 問題文 */
+
+.question{
+
+    font-size:34px;
+
+    line-height:1.8;
+
+    margin-bottom:40px;
+
+}
+
+/* 元素記号を大きく表示 */
+
+.bigText{
+
+    font-size:72px;
+
+    color:#0066cc;
+
+    font-weight:bold;
+
+}
+
+/* ボタン */
+
+.buttonArea{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:40px;
+
+    margin-bottom:30px;
+
+}
+
+button{
+
+    width:170px;
+
+    height:170px;
+
+    border:none;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+    font-size:42px;
+
+    font-weight:bold;
+
+    transition:0.2s;
+
+    color:white;
+
+}
+
+button:hover{
+
+    transform:scale(1.08);
+
+}
+
+button:active{
+
+    transform:scale(0.95);
+
+}
+
+.trueButton{
+
+    background:#28a745;
+
+}
+
+.trueButton:hover{
+
+    background:#1f8a38;
+
+}
+
+.falseButton{
+
+    background:#dc3545;
+
+}
+
+.falseButton:hover{
+
+    background:#bb2232;
+
+}
+
+/* 判定 */
+
+#message{
+
+    min-height:50px;
+
+    font-size:32px;
+
+    font-weight:bold;
+
+    margin-top:20px;
+
+}
+
+/* フッター */
+
+.footer{
+
+    margin-top:30px;
+
+    color:#666;
+
+    font-size:18px;
+
+}
+
+/* スマホ対応 */
+
+@media(max-width:700px){
+
+.top-bar{
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.question{
+
+    font-size:26px;
+
+}
+
+.bigText{
+
+    font-size:56px;
+
+}
+
+.buttonArea{
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+button{
+
+    width:220px;
+
+    height:120px;
+
+    font-size:34px;
+
+}
+
+}
