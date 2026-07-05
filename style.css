@@ -80,19 +80,21 @@ button:active{
 /* 👇 色覚配慮：赤緑をやめる */
 
 .trueButton{
-    background:#1e88e5; /* 青 */
+    background:#4fc3f7; /* 水色 */
+    color:#003344;
 }
 
 .trueButton:hover{
-    background:#1565c0;
+    background:#039be5;
 }
 
 .falseButton{
-    background:#ff8f00; /* オレンジ */
+    background:#f8bbd0; /* 淡いピンク */
+    color:#5a0030;
 }
 
 .falseButton:hover{
-    background:#e65100;
+    background:#f48fb1;
 }
 
 #message{
